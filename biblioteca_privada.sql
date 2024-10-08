@@ -1,17 +1,38 @@
-#DROP DATABASE biblioteca_priv;
+#Aluno: Pedro Yago
 
 CREATE DATABASE biblioteca_priv;
 USE biblioteca_priv;
 
+#TABELA UF 
+CREATE TABLE uf(
+	id_uf int auto_increment primary key not null,
+    sigla_uf varchar (2),
+    nome_estado varchar (100)
+);
+
+#POPULANDO A TABELA UF
+#INSERT INTO uf VALUES (1
+
+#TABELA MUNICIPIO
+CREATE TABLE municipio(
+	id_mun int auto_increment primary key not null,
+    nome_num varchar(100),
+    id_uf_fk int not null,
+    FOREIGN KEY	(id_uf_fk) REFERENCES uf (id_uf)
+);
 #TABELA ENDERECO
 CREATE TABLE endereco(
 	id_end int auto_increment primary key not null,
     logradouro_end varchar(100) null,
     numero_end varchar(10) not null,
     bairro_end varchar(100),
-    municipio_end varchar(100) not null,
-    uf_end varchar(2)
+    #municipio_end varchar(100) not null
+    #uf_end varchar(2)
+    id_mun_fk int not null,
+    FOREIGN KEY (id_mun_fk) REFERENCES municipio (id_mun)
 );
+
+#INSERT INTO endereco values (1, 'Dom Auguto', '216', 'centro'
 
 #TABELA PESSOA
 CREATE TABLE pessoa(
