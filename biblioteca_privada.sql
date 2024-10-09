@@ -1,7 +1,29 @@
 #Aluno: Pedro Yago
 
+
 CREATE DATABASE biblioteca_priv;
 USE biblioteca_priv;
+
+#8. Crie a sequencia de códigos para apagar todo o banco de dado em cascata. Deixe o código comentado.
+DROP TABLE venda_funcionario;
+DROP TABLE emprestimo_funcionario;
+DROP TABLE livro_emprestimo;
+DROP TABLE livro_compra;
+DROP TABLE livro_venda;
+DROP TABLE recebimento;
+DROP TABLE multa;
+DROP TABLE emprestimo;
+DROP TABLE caixa;
+DROP TABLE venda;
+DROP TABLE compra;
+DROP TABLE livro;
+DROP TABLE fornecedor;
+DROP TABLE aluno;
+DROP TABLE funcionario;
+DROP TABLE pessoa;
+DROP TABLE endereco;
+DROP TABLE municIpio;
+DROP TABLE uf;
 
 #TABELA UF 
 CREATE TABLE uf(
@@ -70,6 +92,11 @@ INSERT INTO pessoa values (1, 'Paulo Machado', '1992-07-02', '258.256.985-09',1)
                           (3, 'Alcione Guaicurus', '1990-09-13', '753.456.524-05',2),
                           (4, 'Lucas Scheffer', '2000-03-06', '548.458.415-45',4),
                           (5, 'Angelo Miguel', '2002-01-08', '235.465.115-22',5);
+                          
+#Adicione o atributo idade na tabela Pessoa após o abrituo data de nascimento com o ALTER TABLE
+ALTER TABLE pessoa ADD COLUMN idade_pes int after data_nasc_pes; 
+ALTER TABLE pessoa CHANGE nome_pes nome_pes varchar(500); 
+                         
 #SELECT * FROM pessoa;                           
                           
 #TABELA FUNCIONARIO
@@ -144,6 +171,8 @@ INSERT INTO livro values (1,'A Jornada do Herói', 'Ana Silva', '978-3-16-148410
 							  (3, 'O Futuro da Humanidade', 'Mariana Costa', '978-0-12-345678-9', 'Editora Ciência', 400),
 							  (4, 'Amor e Destino', 'Pedro Oliveira', '978-4-56-789012-3', 'Editora Romance', 280),
 							  (5, 'Segredos do Passado', 'Fernanda Lima', '978-7-89-012345-6', 'Editora História', 350);
+#4. Adicione o atributo preço na tabela Livro na penúltima posição com o ALTER TABLE.
+ALTER TABLE livro ADD COLUMN preco_liv double after editora_liv; 
 #SELECT * FROM livro;
 
 #TABELA COMPRA
@@ -357,6 +386,5 @@ INSERT INTO venda_funcionario values (1, 5, 3, 1),
 									 (5, 8, 3, 1);
 #SELECT * FROM venda_funcionario;
 
-#Adicione o atributo idade na tabela Pessoa após o abrituo data de nascimento com o ALTER TABLE
-ALTER TABLE pessoa ADD COLUMN idade_pes int after data_nasc_pes;
+
 
